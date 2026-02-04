@@ -16,10 +16,11 @@ environments.
   intended functionality and the target module.
 - **Dependencies:** When suggesting new dependencies from PyPI, explain their
   benefits and trade-offs.
-- **Formatting:** Use `ruff format` to ensure consistent code formatting.
-- **Fixes:** Use `ruff check --fix` to automatically fix common errors and
+- **Python project manager:** Use `uv` instead of poetry or pip. 
+- **Formatting:** Use `uv run ruff format` to ensure consistent code formatting.
+- **Fixes:** Use `uv run ruff check --fix` to automatically fix common errors and
   conform to configured lint rules.
-- **Type Checking:** Use `mypy` in strict mode to catch type errors before runtime.
+- **Type Checking:** Use `uv run mypy` in strict mode to catch type errors before runtime.
 
 ## Project Structure
 
@@ -895,6 +896,8 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["ARG", "PLR2004"]
 "alembic/*" = ["ERA001"]
+
+pydocstyle.convention = "google"
 ```
 
 ### MyPy Configuration
@@ -1038,36 +1041,7 @@ async def get_posts_by_creator(
 
 ## Package Management
 
-### Requirements Structure
-
-```
-requirements/
-├── base.txt      # Core production dependencies
-├── dev.txt       # Development tools (includes base.txt)
-└── prod.txt      # Production-only (includes base.txt)
-```
-
-```txt
-# requirements/base.txt
-fastapi>=0.111.0
-pydantic>=2.7.0
-pydantic-settings>=2.2.0
-sqlalchemy[asyncio]>=2.0.30
-asyncpg>=0.29.0
-alembic>=1.13.0
-uvicorn[standard]>=0.29.0
-
-# requirements/dev.txt
--r base.txt
-pytest>=8.2.0
-pytest-asyncio>=0.23.0
-httpx>=0.27.0
-mypy>=1.10.0
-ruff>=0.4.4
-pre-commit>=3.7.0
-```
-
-### Using pyproject.toml
+**Using pyproject.toml and uv**
 
 ```toml
 [project]
@@ -1078,18 +1052,22 @@ dependencies = [
     "fastapi>=0.111.0",
     "pydantic>=2.7.0",
     "sqlalchemy[asyncio]>=2.0.30",
+    "alembic>=1.13.0",
     "asyncpg>=0.29.0",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
-    "pytest>=8.2.0",
-    "pytest-asyncio>=0.23.0",
-    "httpx>=0.27.0",
-    "mypy>=1.10.0",
-    "ruff>=0.4.4",
+    "mypy>=1.19.0",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0"
+    "ruff>=0.14.10",
+    "httpx>=0.28.1",
 ]
 ```
+
+Run `uv sync` to update the project's environment.
+Run `uv add` to add a new dependecy. For example `uv add fastapi` or `uv add --dev pytest`.
 
 ## Security Best Practices
 

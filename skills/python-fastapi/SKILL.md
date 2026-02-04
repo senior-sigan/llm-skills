@@ -5,11 +5,9 @@ description: Guide for creating high-quality backend in Python with FastAPI. Use
 
 # AI Rules for Python FastAPI
 
-You are an expert in Python, FastAPI, Pydantic, SQLAlchemy, and the Model Context
-Protocol (MCP). Your goal is to build robust, performant, and maintainable
-applications following modern best practices. You have expert experience with
-application writing, testing, and running Python applications for production
-environments.
+You are an expert in Python, FastAPI, Pydantic, SQLAlchemy.
+Your goal is to build robust, performant, and maintainable applications following modern best practices.
+You have expert experience with application writing, testing, and running Python applications for production environments.
 
 ## Interaction Guidelines
 
@@ -72,13 +70,10 @@ fastapi-project
 │   ├── auth/
 │   ├── aws/
 │   └── posts/
-├── requirements/
-│   ├── base.txt
-│   ├── dev.txt
-│   └── prod.txt
 ├── .env
 ├── .gitignore
 ├── pyproject.toml
+├── uv.lock
 ├── logging.ini
 └── alembic.ini
 ```
@@ -598,65 +593,6 @@ alembic upgrade head
 alembic downgrade -1
 ```
 
-## MCP (Model Context Protocol) Server
-
-### Basic Server Setup
-
-```python
-# src/mcp_server/main.py
-from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp.types import Tool, TextContent
-
-server = Server("my-mcp-server")
-
-
-@server.list_tools()
-async def list_tools() -> list[Tool]:
-    return [
-        Tool(
-            name="get_user",
-            description="Retrieve user information by ID",
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "user_id": {"type": "string", "description": "The user's UUID"}
-                },
-                "required": ["user_id"],
-            },
-        )
-    ]
-
-
-@server.call_tool()
-async def call_tool(name: str, arguments: dict) -> list[TextContent]:
-    if name == "get_user":
-        user_id = arguments["user_id"]
-        # Implement your logic here
-        return [TextContent(type="text", text=f"User {user_id} found")]
-    raise ValueError(f"Unknown tool: {name}")
-
-
-async def main():
-    async with stdio_server() as (read_stream, write_stream):
-        await server.run(read_stream, write_stream, server.create_initialization_options())
-
-
-if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
-```
-
-### MCP Best Practices
-
-- **Clear Tool Descriptions:** Write detailed descriptions for tools to help
-  LLMs understand when and how to use them.
-- **Input Validation:** Use Pydantic models to validate tool inputs.
-- **Error Handling:** Return meaningful error messages that help LLMs recover.
-- **Idempotency:** Design tools to be idempotent where possible.
-- **Resource Management:** Use context managers for database connections and
-  external service clients.
-
 ## Exception Handling
 
 ### Module-Specific Exceptions
@@ -868,8 +804,8 @@ async def get_user(user_id: UUID) -> User:
 
 ## Code Quality Tools
 
-- [Ruff](./reference/ruff_configuration.md) - How to configure Ruff in pyproject.toml.
-- [Mypy](./reference/mypy_configuration.md) - How to configure Mypy in pyproject.toml.
+- Use `ruff` for linting and formatting. Ruff configuration is in `pyproject.toml` at `[tool.ruff.lint]`.
+- Use `ty` for type checking (`ty` is a new fast alternative to mypy and pyright).
 
 ## REST API Design
 
@@ -976,9 +912,6 @@ Use pyproject.toml and uv.
 - `uv run main.py` to run a script.
 - `uv run uvicorn src.main:app` to run FastAPI server in production mode.
 - `uv run fastapi dev src/main.py` to run in development mode.
-
-When creating a new project use [pyproject.toml file example](./reference/pyproject_configuration.md).
-
 
 ## Security Best Practices
 
