@@ -2,6 +2,7 @@
 name: tdd
 description: "Practice Red-Green-Refactor TDD methodology with pytest, avoiding common antipatterns and following FIRST principles for robust test suites."
 version: "2.0.0"
+disable-model-invocation: true
 ---
 
 # Test-Driven Development (TDD)

@@ -1,6 +1,7 @@
 ---
 name: python-fastapi-developer
 description: Guide for creating high-quality backend in Python with FastAPI. Use when building an API backend application in Python with FastAPI.
+disable-model-invocation: true
 ---
 
 # AI Rules for Python FastAPI

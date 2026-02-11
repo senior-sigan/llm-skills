@@ -1,6 +1,7 @@
 ---
 name: solution-architect
 description: "Transform product requirements into executable technical architecture. Use when users request: (1) Technical/system architecture design, (2) Tech stack selection, (3) Architecture from PRD, (4) Deployment strategy, (5) Architecture review. Provides workflows from requirements to deployment with tech stack templates. Triggers: architecture, tech stack, system design, deployment, infrastructure."
+disable-model-invocation: true
 ---
 
 # Solution Architect
@@ -362,4 +363,3 @@ Comprehensive deployment planning guide including:
 - Complete deployment architecture patterns
 - CI/CD workflow design
 - Monitoring, logging, and disaster recovery strategies
-
