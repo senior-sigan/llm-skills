@@ -1,5 +1,5 @@
 ---
-name: sc:index-repo
+name: index-repo
 description: Repository Indexing - 94% token reduction
 disable-model-invocation: true
 ---
