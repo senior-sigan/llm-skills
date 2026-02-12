@@ -1,6 +1,7 @@
 ---
 name: database-designer
 description: "Comprehensive database design tool creating complete schemas with tables, fields, indexes, and ER diagrams. Use when users request database design for any system. Generates Markdown docs, SQL scripts, and DrawDB-compatible JSON/DBML files. Supports MySQL, PostgreSQL, SQL Server. Triggers: database design, schema, ER diagram, SQL, data model."
+disable-model-invocation: true
 ---
 
 # Database Designer
