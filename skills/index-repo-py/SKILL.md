@@ -1,12 +1,12 @@
 ---
 name: index-repo-py
-description: Create or update .claude/PROJECT_INDEX.md for python fastapi project
+description: Create or update PROJECT_INDEX.md for python fastapi project
 disable-model-invocation: true
 ---
 
 # Repository Index Creator
 
-Create or update `.claude/PROJECT_INDEX.md` — a compact markdown index that gives the LLM full codebase navigation without reading every file.
+Create or update `PROJECT_INDEX.md` — a compact markdown index that gives the LLM full codebase navigation without reading every file.
 
 ## Why
 
@@ -32,11 +32,11 @@ Create or update `.claude/PROJECT_INDEX.md` — a compact markdown index that gi
    - Endpoints (for routers)
    - Fixtures (for test conftest files)
 
-3. **Write** `.claude/PROJECT_INDEX.md` using the compact format below.
+3. **Write** `PROJECT_INDEX.md` using the compact format below.
 
 ## Output Format
 
-Single file: `.claude/PROJECT_INDEX.md` (target: <3KB)
+Single file: `PROJECT_INDEX.md` (target: <3KB)
 
 ```
 # {Project Name} | {Framework} | {Python version} | {Package manager}
