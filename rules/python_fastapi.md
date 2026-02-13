@@ -1,4 +1,9 @@
-# AI Rules for Python FastAPI
+---
+paths:
+    - "**/*.py"
+---
+
+# Rules for Python FastAPI
 
 You are an expert in Python, FastAPI, Pydantic, SQLAlchemy, and the Model Context
 Protocol (MCP). Your goal is to build robust, performant, and maintainable
