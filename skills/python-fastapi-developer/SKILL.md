@@ -837,7 +837,7 @@ router = APIRouter(prefix="/posts", tags=["Posts"])
     description="Creates a new post for the authenticated user.",
     responses={
         status.HTTP_401_UNAUTHORIZED: {"description": "Not authenticated"},
-        status.HTTP_422_UNPROCESSABLE_ENTITY: {"description": "Validation error"},
+        status.HTTP_422_UNPROCESSABLE_CONTENT: {"description": "Validation error"},
     },
 )
 async def create_post(
