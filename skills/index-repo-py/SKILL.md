@@ -2,6 +2,7 @@
 name: index-repo-py
 description: Create or update PROJECT_INDEX.md for python fastapi project
 disable-model-invocation: true
+context: fork
 ---
 
 # Repository Index Creator

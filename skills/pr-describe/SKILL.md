@@ -2,6 +2,7 @@
 name: pr-describe
 description: Generate PR title (conventional commits) and description by analyzing branch changes. Use when creating or describing a pull/merge request.
 disable-model-invocation: true
+context: fork
 ---
 
 # /pr-describe — Generate Pull Request Description

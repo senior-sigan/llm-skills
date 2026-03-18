@@ -1,7 +1,6 @@
 ---
 name: brainstorm
 description: "Interactive requirements discovery through Socratic dialogue and systematic exploration"
-personas: [architect, analyzer, frontend, backend, security, devops, project-manager]
 disable-model-invocation: true
 ---
 
@@ -22,16 +21,14 @@ disable-model-invocation: true
 
 Key behaviors:
 - Multi-persona orchestration across architecture, analysis, frontend, backend, security domains
-- Advanced MCP coordination with intelligent routing for specialized analysis
 - Systematic execution with progressive dialogue enhancement and parallel exploration
 - Cross-session persistence with comprehensive requirements discovery documentation
 
 ## Tool Coordination
 - **Read/Write/Edit**: Requirements documentation and specification generation
-- **TodoWrite**: Progress tracking for complex multi-phase exploration
-- **Task**: Advanced delegation for parallel exploration paths and multi-agent coordination
 - **WebSearch**: Market research, competitive analysis, and technology validation
 - **sequentialthinking**: Structured reasoning for complex requirements analysis
+- **AskUserQuestion**: Clarify specification via interactive dialog
 
 ## Key Patterns
 - **Socratic Dialogue**: Question-driven exploration → systematic requirements discovery
