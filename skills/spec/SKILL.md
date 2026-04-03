@@ -167,10 +167,20 @@ Key entities and their fields. No storage details.
 
 **Entity: [Name]**
 
-| Field        | Type     | Description                 |
-|--------------|----------|-----------------------------|
-| id           | UUID     | Unique identifier           |
-| [field]      | [type]   | [description]               |
+| Field        | Type     | Constraints              | Description                 |
+|--------------|----------|--------------------------|-----------------------------|
+| id           | UUID     | PK                       | Unique identifier           |
+| [field]      | [type]   | [constraints]            | [description]               |
+
+**Typical constraints to consider for each field:**
+- **Required / Optional** — can the field be null or omitted?
+- **Uniqueness** — must the value be unique across the entity?
+- **Length / Size limits** — min/max length for strings, max size for files or collections
+- **Value range** — min/max for numbers, dates; allowed values for enums
+- **Format / Pattern** — email, URL, phone, date format, regex pattern
+- **Default value** — what value is used if not provided?
+- **Referential integrity** — FK to another entity
+- **Immutability** — can the field be updated after creation?
 
 ---
 
